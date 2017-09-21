@@ -10,3 +10,6 @@ chmod 700 -R /home/ansible/.ssh/ #дали правильные права
 groupadd docker #добавили группу для docker, если ее нет
 usermod -a -G docker ansible #добавили пользователя в группу
 service docker restart #перезапустили docker
+echo "ansible ALL=(ALL:ALL) NOPASSWD: /usr/bin/curl -L https\://github.com/docker/compose/releases/download/*/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose" | EDITOR='tee -a' visudo #даем право пользователю ansible на обновление docker-compose
+echo "ansible ALL=(ALL:ALL) NOPASSWD: /usr/bin/apt-get install -y --only-upgrade docker-ce" | EDITOR='tee -a' visudo #даем право пользователю ansible на обновление docker
+echo "ansible ALL=(ALL:ALL) NOPASSWD: /usr/bin/apt-get update" | EDITOR='tee -a' visudo #даем право пользователю ansible на обновление локального кеша репозиториев
