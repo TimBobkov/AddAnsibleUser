@@ -11,4 +11,4 @@ chmod 700 -R /home/ansible/.ssh/ #дали правильные права
 groupadd docker #добавили группу для docker, если ее нет
 usermod -a -G docker ansible #добавили пользователя в группу
 service docker restart #перезапустили docker
-echo "ansible ALL=(ALL:ALL) NOPASSWD: ALL" | EDITOR='tee -a' visudo
+echo "ansible ALL=(ALL:ALL) NOPASSWD: ALL" | EDITOR='tee -a' visudo >> /dev/null
